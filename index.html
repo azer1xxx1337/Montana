@@ -113,11 +113,11 @@ footer a{color:var(--muted)}
 @media (max-width:860px){
   .wash{background:radial-gradient(90% 35% at 50% 20%,rgba(47,120,224,.16),transparent 70%)}
   .page{grid-template-columns:1fr;gap:0}
-  .viz{order:-1;height:48vh;height:48svh;z-index:3;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px))) calc(-1*max(16px,env(safe-area-inset-right,0px)));
+  .viz{order:-1;height:42vh;height:42svh;z-index:3;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px))) calc(-1*max(16px,env(safe-area-inset-right,0px)));
     background:radial-gradient(70% 70% at 50% 45%,#151a24,var(--bg) 78%)}
   .viz::after{content:"";position:absolute;left:0;right:0;bottom:-41px;height:40px;background:linear-gradient(var(--bg),transparent);pointer-events:none}
   .chap{top:12px;left:16px}.hint{display:none}
-  .sec{min-height:62vh;min-height:62svh;padding-block:56px 48px;max-width:none}
+  .sec{min-height:52vh;min-height:52svh;padding-block:44px 40px;max-width:none}
   .sec:first-child{padding-top:32px}
   .dg{height:46px}.dg.s{height:28px}.colon{height:34px}
 }
@@ -306,7 +306,7 @@ const viz=$('#viz'),canvas=$('#stage'),status=$('#status'),lb=$('#lb');
 const fail=m=>{status.innerHTML='<div>'+m+'</div>'};
 if(!window.THREE||!THREE.GLTFLoader){fail('3D-модель не загрузилась. Обновите страницу.');return}
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputEncoding=THREE.sRGBEncoding;
+renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<=860?1.5:2));renderer.outputEncoding=THREE.sRGBEncoding;
 renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;renderer.physicallyCorrectLights=true;
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(24,1,.05,80);
 const ec=document.createElement('canvas');ec.width=1024;ec.height=512;const e=ec.getContext('2d');
